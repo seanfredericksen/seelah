@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/paula"
+          android:title="@string/paula"
+          android:showAsAction="always"/>
+
     <item android:id="@+id/acquire"
           android:title="@string/acquire"
           android:showAsAction="always"/>

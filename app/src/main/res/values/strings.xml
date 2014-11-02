@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SeelahTracker</string>
+    <string name="app_name">Seelah</string>
     <string name="blessing_label">B</string>
     <string name="cure_label">C</string>
     <string name="spell_label">S</string>
@@ -10,5 +10,10 @@
     <string name="acquire">Acquire</string>
     <string name="draw">Draw</string>
     <string name="unknown_label">\?</string>
-
+    <string name="identify">Identify…</string>
+    <string name="blessing">Blessing</string>
+    <string name="cure">Cure</string>
+    <string name="spell">Spell</string>
+    <string name="other">Other</string>
+    <string name="paula">Paula</string>
 </resources>

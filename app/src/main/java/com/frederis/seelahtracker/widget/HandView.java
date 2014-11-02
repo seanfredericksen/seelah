@@ -3,6 +3,7 @@ package com.frederis.seelahtracker.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
@@ -20,6 +21,7 @@ public class HandView extends LinearLayout implements CardManager.Listener {
     @Inject CardManager mCardManager;
 
     private LayoutCallback mLayoutCallback;
+    private Callbacks mCallbacks;
 
     private int mWidth;
 
@@ -78,6 +80,10 @@ public class HandView extends LinearLayout implements CardManager.Listener {
         }
     }
 
+    public void setCallbacks(Callbacks callbacks) {
+        mCallbacks = callbacks;
+    }
+
     private void populateCards(List<CardType> hand) {
         removeAllViews();
 
@@ -87,8 +93,6 @@ public class HandView extends LinearLayout implements CardManager.Listener {
             List<CardType> secondRowCards = hand.subList(Math.min(columns, hand.size()), hand.size());
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
-
-
 
             if (firstRowCards.size() > 0) {
                 LinearLayout firstRow = (LinearLayout) inflater.inflate(R.layout.view_hand_row, this, false);
@@ -118,9 +122,15 @@ public class HandView extends LinearLayout implements CardManager.Listener {
         }
     }
 
-    private void addCardToRow(LinearLayout row, CardType cardType, int width) {
+    private void addCardToRow(LinearLayout row, final CardType cardType, int width) {
         CardView cardView = new HandCardView(getContext());
         cardView.setCardType(cardType);
+        cardView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallbacks.onCardInHandClicked(cardType);
+            }
+        });
 
         LayoutParams params = new LayoutParams(width, ViewGroup.LayoutParams.MATCH_PARENT);
         params.setMargins(5, 5, 5, 5);
@@ -131,5 +141,8 @@ public class HandView extends LinearLayout implements CardManager.Listener {
         void onViewLaidOut();
     }
 
+    public static interface Callbacks {
+        void onCardInHandClicked(CardType cardType);
+    }
 
 }

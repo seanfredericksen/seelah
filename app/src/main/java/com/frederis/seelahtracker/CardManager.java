@@ -71,6 +71,60 @@ public class CardManager {
         update();
     }
 
+    public void acquireCard(CardType cardType) {
+        mTotalTypes.add(cardType);
+        mHand.add(cardType);
+
+        update();
+    }
+
+    public void discardFromTop(CardType cardType) {
+        mDeck.remove(mDeck.size() - 1);
+        mDiscard.add(cardType);
+
+        update();
+    }
+
+    public void rechargeFromTop(CardType cardType) {
+        mDeck.remove(mDeck.size() - 1);
+        mDeck.add(0, cardType);
+
+        update();
+    }
+
+    public void paulaCard(CardType cardType) {
+        cardType.accept(new CardType.Visitor<Void>() {
+            @Override
+            public Void visitBlessing() {
+                rechargeFromTop(CardType.BLESSING);
+                return null;
+            }
+
+            @Override
+            public Void visitCure() {
+                rechargeFromTop(CardType.CURE);
+                return null;
+            }
+
+            @Override
+            public Void visitSpell() {
+                rechargeFromTop(CardType.SPELL);
+                return null;
+            }
+
+            @Override
+            public Void visitOther() {
+                discardFromTop(CardType.OTHER);
+                return null;
+            }
+
+            @Override
+            public Void visitUnknown() {
+                throw new IllegalAccessError("Can't paula an unknown card");
+            }
+        });
+    }
+
     public void rechargeFromHand(CardType cardType) {
         if (!mHand.remove(cardType)) {
             throw new IllegalArgumentException("rechargeFromHand called with card not in hand");
