@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SeelahTracker</string>
+    <string name="blessing_label">B</string>
+    <string name="cure_label">C</string>
+    <string name="spell_label">S</string>
+    <string name="other_label">-</string>
+    <string name="unknown_percent">%1$s%%</string>
+    <string name="acquire">Acquire</string>
+    <string name="draw">Draw</string>
+    <string name="unknown_label">\?</string>
+
+</resources>

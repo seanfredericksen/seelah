@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CardView">
+        <attr name="state_blessing" format="boolean"/>
+        <attr name="state_spell" format="boolean"/>
+        <attr name="state_other" format="boolean"/>
+        <attr name="state_unknown" format="boolean"/>
+    </declare-styleable>
+
+</resources>

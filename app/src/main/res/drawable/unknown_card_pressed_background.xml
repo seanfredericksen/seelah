@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:dither="true" android:shape="rectangle">
+            <padding android:top="1dp" android:right="0dp" android:bottom="2dp" android:left="1dp" />
+            <solid android:color="@color/card_drop_shadow" />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:dither="true" android:shape="rectangle">
+            <solid android:color="@color/unknown_card_pressed_background"/>
+        </shape>
+    </item>
+
+</layer-list>

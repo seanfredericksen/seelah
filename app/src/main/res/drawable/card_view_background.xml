@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <item custom:state_blessing="true" android:drawable="@drawable/blessing_card_background"/>
+    <item custom:state_spell="true" android:drawable="@drawable/spell_card_background"/>
+    <item custom:state_other="true" android:drawable="@drawable/other_card_background"/>
+    <item custom:state_unknown="true" android:drawable="@drawable/unknown_card_background"/>
+
+</selector>
