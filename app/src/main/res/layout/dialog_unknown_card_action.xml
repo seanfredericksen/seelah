@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/blessing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="15dip"
+        android:background="@drawable/blessing_card_background"
+        android:text="@string/blessing"/>
+
+    <TextView
+        android:id="@+id/cure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="15dip"
+        android:background="@drawable/spell_card_background"
+        android:text="@string/cure"/>
+
+    <TextView
+        android:id="@+id/spell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="15dip"
+        android:background="@drawable/spell_card_background"
+        android:text="@string/spell"/>
+
+    <TextView
+        android:id="@+id/other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="15dip"
+        android:background="@drawable/other_card_background"
+        android:text="@string/other"/>
+
+</LinearLayout>
