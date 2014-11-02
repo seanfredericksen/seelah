@@ -27,6 +27,16 @@ public class HandCardActionDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_hand_card_action, container, false);
 
+        View activate = view.findViewById(R.id.activate);
+        activate.setVisibility(getCardType().equals(CardType.CURE) ? View.VISIBLE : View.GONE);
+        activate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Callbacks) getActivity()).activateCure();
+                dismiss();
+            }
+        });
+
         view.findViewById(R.id.discard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +85,7 @@ public class HandCardActionDialogFragment extends DialogFragment {
     }
 
     public static interface Callbacks {
+        void activateCure();
         void discardFromHand(CardType cardType);
         void rechargeFromHand(CardType cardType);
         void removeFromHand(CardType cardType);

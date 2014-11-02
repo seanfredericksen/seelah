@@ -6,6 +6,7 @@
         <attr name="state_spell" format="boolean"/>
         <attr name="state_other" format="boolean"/>
         <attr name="state_unknown" format="boolean"/>
+        <attr name="state_selected_for_cure" format="boolean"/>
     </declare-styleable>
 
 </resources>

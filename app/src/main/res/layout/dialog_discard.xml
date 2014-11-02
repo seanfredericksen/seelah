@@ -1,8 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.frederis.seelahtracker.widget.DiscardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/discard_view"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.frederis.seelahtracker.widget.DiscardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/discard_view"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/card_drop_shadow"/>
+
+    <LinearLayout
+        android:id="@+id/cure_button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:padding="15dip"
+            android:layout_weight="1"
+            android:background="@drawable/unknown_card_background"
+            android:text="@string/cancel"
+            android:textSize="18sp"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="@color/card_drop_shadow"/>
+
+        <TextView
+            android:id="@+id/ok"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/unknown_card_background"
+            android:padding="15dip"
+            android:text="@string/ok"
+            android:textSize="18sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

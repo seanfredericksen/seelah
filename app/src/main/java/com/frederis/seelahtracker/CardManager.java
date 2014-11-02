@@ -198,6 +198,8 @@ public class CardManager {
 
         shuffleDeck();
 
+        rechargeFromHand(CardType.CURE);
+
         update();
     }
 
@@ -214,7 +216,9 @@ public class CardManager {
     }
 
     private void shuffleDeck() {
-        Collections.shuffle(mDeck);
+        for (int i = 0; i < mDeck.size(); i++) {
+            mDeck.set(i, CardType.UNKNOWN);
+        }
     }
 
     private void update() {

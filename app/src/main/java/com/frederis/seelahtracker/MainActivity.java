@@ -15,6 +15,8 @@ import com.frederis.seelahtracker.dialog.IdentifyCardActionDialogFragment;
 import com.frederis.seelahtracker.widget.DeckView;
 import com.frederis.seelahtracker.widget.HandView;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 
@@ -80,7 +82,7 @@ public class MainActivity extends Activity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.discard:
-                showDiscard();
+                showDiscard(false);
                 return true;
             case R.id.paula:
                 identifyCard(CardType.UNKNOWN, TAG_IDENTIFY_PAULA_CARD);
@@ -96,8 +98,8 @@ public class MainActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
-    private void showDiscard() {
-        DiscardDialogFragment.newInstance().show(getFragmentManager(), TAG_DISCARD);
+    private void showDiscard(boolean isCuring) {
+        DiscardDialogFragment.newInstance(isCuring).show(getFragmentManager(), TAG_DISCARD);
     }
 
     @Override
@@ -118,6 +120,11 @@ public class MainActivity extends Activity
         } else {
             throw new IllegalStateException("Trying to identify card for unknown action");
         }
+    }
+
+    @Override
+    public void activateCure() {
+        showDiscard(true);
     }
 
     @Override
@@ -159,6 +166,11 @@ public class MainActivity extends Activity
     public void onCardInDiscardClicked(CardType cardType) {
         DiscardCardActionDialogFragment.newInstance(cardType)
                 .show(getFragmentManager(), TAG_DISCARD_CARD_ACTION);
+    }
+
+    @Override
+    public void cure(List<CardType> cardTypes) {
+        mCardManager.cureCardsFromDiscard(cardTypes);
     }
 
 }

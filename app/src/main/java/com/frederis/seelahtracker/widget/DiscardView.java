@@ -12,6 +12,7 @@ import com.frederis.seelahtracker.R;
 import com.frederis.seelahtracker.SeelahTrackerApplication;
 import com.frederis.seelahtracker.card.CardType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,6 +25,7 @@ public class DiscardView extends LinearLayout implements CardManager.Listener {
     private Callbacks mCallbacks;
 
     private int mWidth;
+    private boolean mIsInCureMode;
 
     public DiscardView(Context context) {
         super(context);
@@ -80,6 +82,23 @@ public class DiscardView extends LinearLayout implements CardManager.Listener {
         }
     }
 
+    public List<CardType> getSelectedCards() {
+        List<CardType> selectedCards = new ArrayList<CardType>();
+
+        for (int i = 0; i < getChildCount(); i++) {
+            LinearLayout row = (LinearLayout) getChildAt(i);
+
+            for (int j = 0; j < row.getChildCount(); j++) {
+                CardView cardView = (CardView) row.getChildAt(j);
+                if (cardView.isSelectedForCure()) {
+                    selectedCards.add(cardView.getCardType());
+                }
+            }
+        }
+
+        return selectedCards;
+    }
+
     public void setCallbacks(Callbacks callbacks) {
         mCallbacks = callbacks;
     }
@@ -122,13 +141,21 @@ public class DiscardView extends LinearLayout implements CardManager.Listener {
         }
     }
 
+    public void setIsInCureMode(boolean isInCureMode) {
+        mIsInCureMode = isInCureMode;
+    }
+
     private void addCardToRow(LinearLayout row, final CardType cardType, int width) {
-        CardView cardView = new HandCardView(getContext());
+        final CardView cardView = new HandCardView(getContext());
         cardView.setCardType(cardType);
         cardView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallbacks.onCardInDiscardClicked(cardType);
+                if (mIsInCureMode) {
+                    cardView.toggleSelected();
+                } else {
+                    mCallbacks.onCardInDiscardClicked(cardType);
+                }
             }
         });
 

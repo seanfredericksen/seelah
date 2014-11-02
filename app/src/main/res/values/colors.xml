@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="blessing_card_background">#FF97C0E6</color>
+    <color name="blessing_card_selected_background">#FF6490B3</color>
     <color name="blessing_card_pressed_background">#FFC8DCEE</color>
 
     <color name="spell_card_background">#FFBC98CF</color>
+    <color name="spell_card_selected_background">#FF89659C</color>
     <color name="spell_card_pressed_background">#FFD5C5E1</color>
 
     <color name="other_card_background">#FF787B78</color>
+    <color name="other_card_selected_background">#FF454845</color>
     <color name="other_card_pressed_background">#FFB2B1B0</color>
 
     <color name="unknown_card_background">#FFDEDEDE</color>

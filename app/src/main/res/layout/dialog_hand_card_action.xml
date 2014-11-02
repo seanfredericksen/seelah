@@ -6,6 +6,15 @@
               android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/activate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="15dip"
+        android:background="@drawable/unknown_card_background"
+        android:text="@string/activate"/>
+
+    <TextView
         android:id="@+id/discard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
