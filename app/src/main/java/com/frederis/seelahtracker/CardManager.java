@@ -125,12 +125,65 @@ public class CardManager {
         });
     }
 
+    public void discardFromHand(CardType cardType) {
+        if (!mHand.remove(cardType)) {
+            throw new IllegalArgumentException("discardFromHand called with card not in hand");
+        }
+
+        mDiscard.add(cardType);
+
+        Log.d("SEELAH", "Added to discard, current state: " + mDiscard);
+
+        update();
+    }
+
     public void rechargeFromHand(CardType cardType) {
         if (!mHand.remove(cardType)) {
             throw new IllegalArgumentException("rechargeFromHand called with card not in hand");
         }
 
         mDeck.add(0, cardType);
+
+        update();
+    }
+
+    public void removeFromHand(CardType cardType) {
+        if (!mHand.remove(cardType)) {
+            throw new IllegalArgumentException("removeFromHand called with card not in hand");
+        }
+
+        mTotalTypes.remove(cardType);
+
+        update();
+    }
+
+    public void addToHandFromDiscard(CardType cardType) {
+        if (!mDiscard.remove(cardType)) {
+            throw new IllegalArgumentException("addToHand called with card not in discard");
+        }
+
+        mHand.add(cardType);
+
+        update();
+    }
+
+    public void rechargeFromDiscard(CardType cardType) {
+        if (!mDiscard.remove(cardType)) {
+            throw new IllegalArgumentException("rechargeFromDiscard called with card not in discard");
+        }
+
+        mDeck.add(0, cardType);
+
+        update();
+    }
+
+    public void removeFromDiscard(CardType cardType) {
+        if (!mDiscard.remove(cardType)) {
+            throw new IllegalArgumentException("removeFromDiscard called with card not in discard");
+        }
+
+        mTotalTypes.remove(cardType);
+
         update();
     }
 
@@ -207,7 +260,15 @@ public class CardManager {
     }
 
     public void addListener(Listener listener) {
+        addListener(listener, false);
+    }
+
+    public void addListener(Listener listener, boolean deliverImmediately) {
         mListeners.add(listener);
+
+        if (deliverImmediately) {
+            listener.onCardsUpdated(mDeck, mHand, mDiscard, computeUnknownPercentage());
+        }
     }
 
     public void removeListener(Listener listener) {

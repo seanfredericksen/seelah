@@ -16,4 +16,11 @@
     <string name="spell">Spell</string>
     <string name="other">Other</string>
     <string name="paula">Paula</string>
+    <string name="discard">Discard</string>
+    <string name="recharge">Recharge</string>
+    <string name="remove">Remove</string>
+    <string name="action">Action…</string>
+    <string name="change_type">Change Type</string>
+    <string name="add_to_hand">Add to Hand</string>
+    <string name="discard_pile">Discard Pile</string>
 </resources>

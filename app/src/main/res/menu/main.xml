@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/paula"
-          android:title="@string/paula"
+
+    <item android:id="@+id/cure"
+          android:title="@string/cure"
+          android:icon="@drawable/icon_cure_actionbar"
+          android:showAsAction="always"/>
+
+    <item android:id="@+id/discard"
+          android:title="@string/discard"
+          android:icon="@drawable/icon_trash_actionbar"
           android:showAsAction="always"/>
 
     <item android:id="@+id/acquire"
           android:title="@string/acquire"
+          android:icon="@drawable/icon_add_actionbar"
+          android:showAsAction="always"/>
+
+    <item android:id="@+id/paula"
+          android:title="@string/paula"
+          android:icon="@drawable/icon_paula_actionbar"
           android:showAsAction="always"/>
 
     <item android:id="@+id/draw"
           android:title="@string/draw"
+          android:icon="@drawable/icon_directions_actionbar"
           android:showAsAction="always"/>
 
 </menu>
