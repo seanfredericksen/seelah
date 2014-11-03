@@ -26,4 +26,7 @@
     <string name="activate">Activate</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
+    <string name="cure_recharged_question">Cure recharged?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

@@ -198,8 +198,6 @@ public class CardManager {
 
         shuffleDeck();
 
-        rechargeFromHand(CardType.CURE);
-
         update();
     }
 

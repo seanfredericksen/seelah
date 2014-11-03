@@ -8,11 +8,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.frederis.seelahtracker.card.CardType;
+import com.frederis.seelahtracker.dialog.CureRechargeDialogFragment;
 import com.frederis.seelahtracker.dialog.DiscardCardActionDialogFragment;
 import com.frederis.seelahtracker.dialog.DiscardDialogFragment;
 import com.frederis.seelahtracker.dialog.HandCardActionDialogFragment;
 import com.frederis.seelahtracker.dialog.IdentifyCardActionDialogFragment;
-import com.frederis.seelahtracker.widget.DeckView;
 import com.frederis.seelahtracker.widget.HandView;
 
 import java.util.List;
@@ -24,7 +24,8 @@ public class MainActivity extends Activity
         implements IdentifyCardActionDialogFragment.Callbacks,
                    HandCardActionDialogFragment.Callbacks,
                    DiscardDialogFragment.Callbacks,
-                   DiscardCardActionDialogFragment.Callbacks {
+                   DiscardCardActionDialogFragment.Callbacks,
+                   CureRechargeDialogFragment.Callbacks {
 
     private static final String TAG_IDENTIFY_HAND_CARD = "identifyHandCard";
     private static final String TAG_IDENTIFY_ACQUIRED_CARD = "identifyAcquiredCard";
@@ -32,10 +33,10 @@ public class MainActivity extends Activity
     private static final String TAG_HAND_CARD_ACTION = "handCardAction";
     private static final String TAG_DISCARD_CARD_ACTION = "discardCardAction";
     private static final String TAG_DISCARD = "discard";
+    private static final String TAG_CURE_RECHARGED = "cureRecharged";
 
     @Inject CardManager mCardManager;
 
-    private DeckView mDeckView;
     private HandView mHandView;
 
     @Override
@@ -44,7 +45,6 @@ public class MainActivity extends Activity
 
         setContentView(R.layout.activity_main);
 
-        mDeckView = (DeckView) findViewById(R.id.deck_view);
         mHandView = (HandView) findViewById(R.id.hand_view);
 
         mHandView.setCallbacks(new HandView.Callbacks() {
@@ -171,6 +171,18 @@ public class MainActivity extends Activity
     @Override
     public void cure(List<CardType> cardTypes) {
         mCardManager.cureCardsFromDiscard(cardTypes);
+
+        CureRechargeDialogFragment.newInstance().show(getFragmentManager(), TAG_CURE_RECHARGED);
+    }
+
+    @Override
+    public void onCureWasRecharged() {
+        mCardManager.rechargeFromHand(CardType.CURE);
+    }
+
+    @Override
+    public void onCureWasDiscarded() {
+        mCardManager.discardFromHand(CardType.CURE);
     }
 
 }
